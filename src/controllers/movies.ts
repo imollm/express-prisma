@@ -1,11 +1,11 @@
 import { Validator } from "../helpers/validators.js";
 import { MovieModel } from "../models/movie.js";
-import { MySQLRepository as Repository } from "../models/repositories/mysql.js";
+import { MySQLMovieRepository as MovieRepository } from "../models/repositories/mysql.js";
 
 export class MoviesController {
   static async getAll(_: any, res: any): Promise<MovieModel[] | []> {
     try {
-      const movies = await Repository.getInstance().getAllMovies();
+      const movies = await MovieRepository.getInstance().getAll();
       return res.json(movies);
     } catch (error) {
       return res.status(500).json({ error: error });
@@ -15,7 +15,7 @@ export class MoviesController {
   static async getById(req: any, res: any): Promise<MovieModel | undefined> {
     try {
       const { id } = req.params;
-      const movie = await Repository.getInstance().getMovieById(id);
+      const movie = await MovieRepository.getInstance().getById(id);
 
       if (!movie) {
         return res.status(404).json({ error: "Movie not found" });
@@ -41,7 +41,7 @@ export class MoviesController {
         });
       }
 
-      const movies = await Repository.getInstance().searchMovies(body);
+      const movies = await MovieRepository.getInstance().search(body);
 
       if (movies.length === 0) {
         return res
