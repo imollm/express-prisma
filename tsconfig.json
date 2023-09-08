@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Set your target ECMAScript version
+    "module": "NodeNext", // Use ES modules
+    "strict": true, // Enable strict type checking
+    "esModuleInterop": true, // Allow default imports from CommonJS modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Enforce consistent file naming
+    "outDir": "./dist", // Output directory for compiled files
+    "rootDir": "./src", // Root directory of your TypeScript source files
+    "declaration": true, // Generate declaration files (.d.ts)
+    "declarationDir": "./types", // Output directory for declaration files
+    "sourceMap": true // Generate source maps for debugging
+  },
+  "include": ["src/**/*.ts"], // Specify which files to include for compilation
+  "exclude": ["node_modules"] // Specify which files to exclude from compilation
+}
