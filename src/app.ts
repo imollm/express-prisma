@@ -1,6 +1,6 @@
 import type { Express, Request, Response } from "express";
 import express from "express";
-import fs from "node:fs";
+import { webRoutes } from "./routes/web.js";
 
 const app: Express = express();
 const PORT = process.env.API_PORT || 3000;
@@ -10,8 +10,6 @@ app.get('/', (_: Request, res: Response) => {
     res.send(indexHtml);
 });
 
-app.get('/api/healthcheck', (_: Request, res: Response): Response => {
-    return res.status(200).json({ status: 'OK' });
-});
+app.use("/", webRoutes);
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
