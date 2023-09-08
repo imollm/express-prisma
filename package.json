@@ -30,7 +30,8 @@
   "homepage": "https://github.com/imollm/express-prisma#readme",
   "dependencies": {
     "@prisma/client": "^5.2.0",
-    "express": "4.18.2"
+    "express": "4.18.2",
+    "joi": "17.10.1"
   },
   "eslintConfig": {
     "extends": "ts-standard"
