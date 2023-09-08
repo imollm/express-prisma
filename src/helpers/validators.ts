@@ -18,4 +18,18 @@ export class Validator {
       return undefined;
     }
   }
+
+  static areGenreSearchParamsValids(searchParams: {}):
+    | ValidationError
+    | undefined {
+    try {
+      const schema = Joi.object({
+        name: Joi.string(),
+      });
+      return schema.validate(searchParams).error;
+    } catch (error) {
+      console.error(error);
+      return undefined;
+    }
+  }
 }
