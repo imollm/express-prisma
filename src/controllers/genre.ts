@@ -1,4 +1,4 @@
-import { Validator } from "../helpers/validators.js";
+import { Validator } from "../utils/validators.js";
 import { GenreModel } from "../models/genre.js";
 import { MySQLGenreRepository as GenreRepository } from "../models/repositories/mysql.js";
 

@@ -1,4 +1,4 @@
-import { Validator } from "../helpers/validators.js";
+import { Validator } from "../utils/validators.js";
 import { MovieModel } from "../models/movie.js";
 import { MySQLMovieRepository as MovieRepository } from "../models/repositories/mysql.js";
 
