@@ -31,7 +31,7 @@ try {
       },
     });
   }
-} catch (error) {
+} catch (error: any) {
   console.error(`Error while seeding mysql database ${error.message}`);
 } finally {
   await prisma.$disconnect();

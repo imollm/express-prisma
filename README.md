@@ -2,6 +2,8 @@
 
 This is a simple REST API using the Repository design pattern to work with two database services MySQL and MongoDB.
 
+Some features of this project are working with the new stable Node version 20.6.0
+
 ## 1. Init your database services
 
 ### 1.1 With Docker
@@ -37,20 +39,26 @@ MYSQLDB_URI=\"mysql://root:123456@localhost:3306/moviesdb\"
 MONGODB_URI=\"mongodb://root:123456@localhost:27017/\"" >> .env
 ```
 
+## 4. Build the project
+
+```sh
+npm run build
+```
+
 ## 4. Create a new MySQL database
 
 ```sh
-npx prisma db push
+npm run create:mysql:db
 ```
 
-## 4. Seed Databases
+## 5. Seed Databases
 
 ```sh
 npm run seed:mysql:db # for MySQL
 npm run seed:mongo:db # for MongoDB
 ```
 
-## 5. Build and run the API service in DEV mode
+## 6. Build and run the API service in DEV mode
 
 ```sh
 npm run start:dev

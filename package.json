@@ -8,10 +8,11 @@
     "build": "tsc",
     "start:dev": "tsc && node --env-file=.env ./dist/app.js",
     "dev": "tsc-watch --onSuccess \"node --env-file=.env ./dist/app.js\"",
-    "seed:mysql": "node ./prisma/commands/seed.js",
-    "clean:mysql": "node ./prisma/commands/clean.js",
-    "seed:mongo": "node --env-file=.env ./mongoose/commands/seed.js",
-    "clean:mongo": "node --env-file=.env ./mongoose/commands/clean.js"
+    "create:mysql:db": "npx prisma push db",
+    "seed:mysql": "node ./dist/utils/prisma/seed.js",
+    "clean:mysql": "node ./dist/utils/prisma/clean.js",
+    "seed:mongo": "node --env-file=.env ./dist/utils/mongoose/seed.js",
+    "clean:mongo": "node --env-file=.env ./dist/utils/mongoose/clean.js"
   },
   "repository": {
     "type": "git",

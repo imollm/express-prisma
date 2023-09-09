@@ -54,3 +54,54 @@ export const genres = [
   { name: "Crime" },
   { name: "Adventure" },
 ];
+
+export const moviesGenres = [
+  {
+    movieTitle: "Captain Marvel",
+    genreName: "Action",
+  },
+  {
+    movieTitle: "Captain Marvel",
+    genreName: "Sci-fi",
+  },
+  {
+    movieTitle: "Inception",
+    genreName: "Action",
+  },
+  {
+    movieTitle: "Inception",
+    genreName: "Sci-fi",
+  },
+  {
+    movieTitle: "Inception",
+    genreName: "Thriller",
+  },
+  {
+    movieTitle: "The Shawshank Redemption",
+    genreName: "Drama",
+  },
+  {
+    movieTitle: "The Shawshank Redemption",
+    genreName: "Crime",
+  },
+  {
+    movieTitle: "Avatar",
+    genreName: "Action",
+  },
+  {
+    movieTitle: "Avatar",
+    genreName: "Adventure",
+  },
+  {
+    movieTitle: "Avatar",
+    genreName: "Sci-fi",
+  },
+  {
+    movieTitle: "The Matrix",
+    genreName: "Action",
+  },
+  {
+    movieTitle: "The Matrix",
+    genreName: "Sci-fi",
+  },
+];

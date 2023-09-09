@@ -19,11 +19,11 @@ POST http://localhost:4000/api/v1/movies/search
 Content-Type: application/json
 
 {
-    "title": "Movie 1",
-    "year": 2020,
-    "director": "Director 1",
-    "duration": 120,
-    "rate": 7.5
+    "title": "Captain Marvel",
+    "year": 2019,
+    "director": "Anna Boden, Ryan Fleck",
+    "duration": 123,
+    "rate": 6.3
 }
 
 ################################
@@ -33,13 +33,13 @@ Content-Type: application/json
 ### GET all genres
 GET http://localhost:4000/api/v1/genres
 
-### GET movie by id
-GET http://localhost:4000/api/v1/genres/1
+### GET genre by id
+GET http://localhost:4000/api/v1/genres/64fc49a0a22f414f0021fc1f
 
 ### POST serach genres
 POST http://localhost:4000/api/v1/genres/search
 Content-Type: application/json
 
 {
-    "name": "Comedy"
+    "name": "Drama"
 }
