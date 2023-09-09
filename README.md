@@ -1,40 +1,56 @@
 # API REST with ORM and MySQL
 
-## Init your database service
+This is a simple REST API using the Repository design pattern to work with two database services MySQL and MongoDB.
 
-### With Docker
+## 1. Init your database services
+
+### 1.1 With Docker
+
 Run a MySQL 8.0 service on port 3306 with root user and password 123456
 
 ```sh
-docker run -p 3306:3306 -d --name mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:8.0
+docker run -p 3306:3306 -d --name mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+mysql:8.0
 ```
 
-## Install Node dependencies
+Run a MongoDB service on port 27017 with root user and password 123456
+
+```sh
+docker run -p 27017:27017 -d --name mongodb \
+-e MONGO_INITDB_ROOT_USERNAME=root \
+-e MONGO_INITDB_ROOT_PASSWORD=123456 \
+mongo
+```
+
+## 2. Install Node dependencies
 
 ```sh
 npm run install
 ```
 
-## Create an .env file in the root
+## 3. Add to env file the connection url of databases
 
 ```sh
-touch .env
+echo "API_PORT=4000
+MYSQLDB_URI=\"mysql://root:123456@localhost:3306/moviesdb\"
+MONGODB_URI=\"mongodb://root:123456@localhost:27017/\"" >> .env
 ```
 
-### Add to env file the connection url of database
+## 4. Create a new MySQL database
 
 ```sh
-echo "API_PORT=4000\n
-DATABASE_URL=\"mysql://root:123456@localhost:3306/moviesdb\""
+npx prisma db push
 ```
 
-## Seed Database
+## 4. Seed Databases
 
 ```sh
-npm run seed:db
+npm run seed:mysql:db # for MySQL
+npm run seed:mongo:db # for MongoDB
 ```
 
-## Build and run the API service in DEV mode
+## 5. Build and run the API service in DEV mode
 
 ```sh
 npm run start:dev
