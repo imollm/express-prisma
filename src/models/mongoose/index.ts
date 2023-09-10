@@ -2,8 +2,9 @@
 
 import { Schema, model } from "mongoose";
 
-interface IMovieMongooseModel {
-  title: String;
+export interface IMovieMongooseModel extends Document {
+  id: String;
+  title: string;
   year: Number;
   director: String;
   duration: Number;
@@ -13,7 +14,8 @@ interface IMovieMongooseModel {
   updatedAt: Date;
 }
 
-interface IGenreMongooseModel {
+export interface IGenreMongooseModel extends Document {
+  id: String;
   name: String;
   createdAt: Date;
   updatedAt: Date;

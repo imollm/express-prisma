@@ -1,6 +1,6 @@
 import { GenreModel } from "./genre.js";
 
-export class MovieModel {
+interface IMovieModel {
   id: string;
   title: string;
   year: number;
@@ -8,7 +8,18 @@ export class MovieModel {
   duration: number;
   poster: string;
   rate: number;
-  genres: GenreModel[];
+  genres: GenreModel[] | [];
+}
+
+export class MovieModel implements IMovieModel {
+  id: string;
+  title: string;
+  year: number;
+  director: string;
+  duration: number;
+  poster: string;
+  rate: number;
+  genres: GenreModel[] | [];
 
   constructor(
     id: string,

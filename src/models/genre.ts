@@ -1,11 +1,17 @@
 import { MovieModel } from "./movie.js";
 
-export class GenreModel {
-  id: string | undefined;
-  name: string | undefined;
-  movies: MovieModel[] | undefined;
+interface IGenreModel {
+  id: string;
+  name: string;
+  movies: MovieModel[] | [];
+}
 
-  constructor(id?: string, name?: string, movies?: MovieModel[]) {
+export class GenreModel implements IGenreModel {
+  id: string;
+  name: string;
+  movies: MovieModel[] | [];
+
+  constructor(id: string, name: string, movies: MovieModel[]) {
     this.id = id;
     this.name = name;
     this.movies = movies;

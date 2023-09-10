@@ -1,4 +1,4 @@
-import { IRepository } from "./repository.js";
+import { IRepository } from "./repository.interface.js";
 import { MovieModel } from "../movie.js";
 import { GenreModel } from "../genre.js";
 import { PrismaClient } from "@prisma/client";
@@ -28,7 +28,8 @@ export class MySQLMovieRepository implements IRepository<MovieModel> {
       movie.poster,
       movie.rate.toNumber(),
       movie.genres.map(
-        (genre: any) => new GenreModel(genre.id.toString(), genre.name)
+        (genre: any) =>
+          new GenreModel(genre.id as string, genre.name as string, [])
       )
     );
   }
@@ -39,8 +40,8 @@ export class MySQLMovieRepository implements IRepository<MovieModel> {
         include: { genres: true },
       });
       return allMovies.map((movie) => this.buildModel(movie));
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error(`MySQLMovieRepository::getAll error: ${error.message}`);
       return [];
     }
   }
@@ -55,8 +56,8 @@ export class MySQLMovieRepository implements IRepository<MovieModel> {
       if (movie) {
         return this.buildModel(movie);
       }
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error(`MySQLMovieRepository::getById error: ${error.message}`);
     }
   }
 
@@ -71,8 +72,8 @@ export class MySQLMovieRepository implements IRepository<MovieModel> {
       if (movies && movies.length > 0) {
         moviesResult = movies.map((movie) => this.buildModel(movie));
       }
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error(`MySQLMovieRepository::search error: ${error.message}`);
     } finally {
       return moviesResult;
     }
@@ -96,18 +97,18 @@ export class MySQLGenreRepository implements IRepository<GenreModel> {
 
   private buildModel(genre: any): GenreModel {
     return new GenreModel(
-      genre.id.toString(),
+      genre.id as string,
       genre.name,
       genre.movies?.map(
         (movie: any) =>
           new MovieModel(
-            movie.id.toString(),
+            movie.id as string,
             movie.title,
             movie.year,
             movie.director,
             movie.duration,
             movie.poster,
-            movie.rate.toNumber(),
+            movie.rate as number,
             []
           )
       )
@@ -120,8 +121,8 @@ export class MySQLGenreRepository implements IRepository<GenreModel> {
         include: { movies: true },
       });
       return allGenres.map((movie) => this.buildModel(movie));
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error(`MySQLGenreRepository::getAll error: ${error.message}`);
       return [];
     }
   }
@@ -136,8 +137,8 @@ export class MySQLGenreRepository implements IRepository<GenreModel> {
       if (movie) {
         return this.buildModel(movie);
       }
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error(`MySQLGenreRepository::getById error: ${error.message}`);
     }
   }
 
@@ -152,8 +153,8 @@ export class MySQLGenreRepository implements IRepository<GenreModel> {
       if (genres && genres.length > 0) {
         genresResult = genres.map((movie) => this.buildModel(movie));
       }
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error(`MySQLGenreRepository::search error: ${error.message}`);
     } finally {
       return genresResult;
     }
