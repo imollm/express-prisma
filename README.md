@@ -1,4 +1,4 @@
-# API REST with ORM and MySQL
+# API REST with ORM and MySQL
 
 This is a simple REST API using the Repository design pattern to work with two database services MySQL and MongoDB.
 
